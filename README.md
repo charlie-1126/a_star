@@ -1,6 +1,7 @@
 # a_star
 
 ## 실행
+exe파일 실행
 
 ### Mode
 * start : 시작지점 설정

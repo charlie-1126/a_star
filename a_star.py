@@ -3,6 +3,15 @@ import tkinter.messagebox
 
 window = tkinter.Tk()
 
+#변수 설정
+size_r = 40
+size_c = 70
+mode = 2
+openlist = []
+closelist = []
+finding = 0
+
+#모드 선택
 def select_start():
     global mode
     mode = 2
@@ -13,6 +22,7 @@ def select_wall():
     global mode
     mode = 1
 
+#길 찾기
 def find_path():
     global finding
     finding = 1
@@ -71,6 +81,7 @@ def find_path():
 
 
 
+#길 초기화
 def reset_path():
     global openlist,closelist,finding
     finding = 0
@@ -81,6 +92,7 @@ def reset_path():
         for c in range(Map.cols):
             Map.data[r][c].reset()
 
+#맵 초기화
 def reset_map():
     global openlist,closelist,finding
     finding = 0
@@ -127,14 +139,6 @@ def set_map():
     tkinter.Button(new_window, text="취소", command=new_window.destroy).pack()
 
 
-size_r = 40
-size_c = 70
-mode = 2
-openlist = []
-closelist = []
-finding = 0
-
-
 class Node:
     def __init__(self, row, col):
         self.row = row
@@ -167,6 +171,7 @@ class Node:
             self.g = 0
             self.parent = None
 
+#맵 클래스
 class NodeMap:
     def __init__(self, window, rows, cols, pixel_size):
         self.rows = rows
@@ -247,10 +252,10 @@ class NodeMap:
             self.canvas.itemconfig(f"({row},{col})", fill="red")
             self.end = (row,col)
 
-
+#맵 설정
 Map = NodeMap(window, size_r, size_c, 15)
 
-# tkinter setup
+# tkinter setting
 window.title("A* 구현")
 window.resizable(False, False)
 
